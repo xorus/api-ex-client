@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Profiles} from "./components/Profiles";
+import {useCompanies} from "./components/useCompanies";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const companies = useCompanies();
+
+    return (
+        <div className="container">
+            <Profiles companies={companies}/>
+            <details>
+                <summary>
+                    debug: liste des sociétées
+                </summary>
+                <table className={"table table-bordered"}>
+                    {companies.map(x =>
+                        <tr>
+                            <td>{x.id}</td>
+                            <td>{x.name}</td>
+                            <td>{x.url}</td>
+                        </tr>)}
+                </table>
+            </details>
+        </div>
+    );
 }
 
 export default App;
