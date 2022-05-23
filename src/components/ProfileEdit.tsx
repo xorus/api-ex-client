@@ -1,6 +1,5 @@
 import {ApiCompany, ApiProfile} from "../apiDef";
 import {useEffect, useState} from "react";
-import {editProfile} from "../model";
 
 export function ProfileEdit(props: {
     profile: ApiProfile,
